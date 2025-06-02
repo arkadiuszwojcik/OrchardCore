@@ -39,10 +39,10 @@ Currently you can filter shapes by:
 ```json
 {
   "ContentPart": [{
-  "place":"SomeZone"
+  "place":"SomeZone",
   "differentiator":"GalleryPart"
   }],
-  "GalleryPart": [{...}], //this wont work unless you registered a driver for the part
+  "GalleryPart": [{...}] //this wont work unless you registered a driver for the part
 }
 ```
 
@@ -75,7 +75,7 @@ Placement information consists of:
       "wrappers": [ "TextField_Title" ],
       "shape": "AnotherShape"
     }
-  ],
+  ]
 }
 ```
 
@@ -93,6 +93,24 @@ Fields have a custom differentiator as their shape is used in many places.
 It is built using the `Part` it's contained in, and the name of the `Field`.  
 For instance, if a field named `MyField` would be added to an `Article` content type, its differentiator would be `Article-MyField`.  
 If a field named `City` was added to an `Address` part then its differentiator would be `Address-City`.
+
+### Field Display Modes
+
+The placement rules are stricter for non-standard display modes.
+
+1. The shape type must include `_Display`. For example `TextField_Display`.
+2. You must use the full differentiator defined as `[PartType]-[FieldName]-[FieldType]_Display__[DisplayMode]`. For a text field named `MyField` on the Content Type `Blog` the differentiator is `Blog-MyField-TextField_Display__Header`.
+
+```json
+{
+  "TextField_Display": [
+    {
+      "place": "Content:1",
+      "differentiator": "Blog-MyField-TextField_Display__Header"
+    }
+  ]
+}
+```
 
 ## Shape differentiators
 
@@ -207,7 +225,7 @@ We also specify that the `Content` column will take 9 columns, of the default 12
 
 !!! note
     By default the columns will break responsively at the `md` breakpoint, and a modifier will be parsed to `col-md-9`.
-    If you want to change the breakpoint, you could also specifiy `Content_lg-9`, which is parsed to `col-lg-9`.
+    If you want to change the breakpoint, you could also specify `Content_lg-9`, which is parsed to `col-lg-9`.
 
 ### Dynamic part placement
 

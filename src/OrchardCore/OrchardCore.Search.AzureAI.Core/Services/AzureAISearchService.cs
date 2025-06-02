@@ -2,6 +2,7 @@ using Azure.Search.Documents;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OrchardCore.Contents.Indexing;
+using OrchardCore.Entities;
 using OrchardCore.Search.Abstractions;
 using OrchardCore.Search.AzureAI.Models;
 using OrchardCore.Settings;
@@ -56,7 +57,7 @@ public class AzureAISearchService : ISearchService
             return result;
         }
 
-        var indexSettings = await _indexSettingsService.GetAsync(index);
+        var indexSettings = await _indexSettingsService.FindByNameAsync(index);
 
         if (indexSettings is null)
         {
@@ -65,7 +66,7 @@ public class AzureAISearchService : ISearchService
             return result;
         }
 
-        result.Latest = indexSettings.IndexLatest;
+        result.Latest = indexSettings.As<ContentIndexMetadata>().IndexLatest;
 
         try
         {

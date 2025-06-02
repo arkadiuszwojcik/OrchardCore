@@ -4,6 +4,7 @@ using GraphQL.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using OrchardCore.Apis.GraphQL;
 using OrchardCore.ContentManagement.GraphQL.Options;
 using OrchardCore.ContentManagement.Metadata.Models;
 
@@ -85,9 +86,9 @@ public sealed class TypedContentTypeBuilder : IContentTypeBuilder
                                     Source = resolvedPart,
                                     FieldDefinition = field,
                                     UserContext = context.UserContext,
-                                    RequestServices = context.RequestServices
+                                    RequestServices = context.RequestServices,
                                 });
-                            })
+                            }),
                         };
 
                         contentItemType.AddField(rolledUpField);
@@ -134,7 +135,7 @@ public sealed class TypedContentTypeBuilder : IContentTypeBuilder
                     {
                         Type = inputGraphTypeResolved.GetType(),
                         Name = partFieldName,
-                        Description = inputGraphTypeResolved.Description
+                        Description = inputGraphTypeResolved.Description,
                     }.WithPartNameMetaData(partName));
                 }
             }

@@ -6,15 +6,15 @@ Enabling the `OrchardCore.Roles` module will allow you to manage the user roles.
 
 Orchard Core defines the following predefined permission stereotypes:
 
-| Name | Description |
-| --- | --- |
+| Name            | Description                                                          |
+|-----------------|----------------------------------------------------------------------|
 | `Administrator` | A **system role** that grants all permissions to the assigned users. |
-| `Anonymous` | A **system role** representing all non-authenticated users. |
-| `Authenticated` | A **system role** representing all authenticated users. |
-| `Author` | Grants users the ability to create content. |
-| `Contributor` | Grants users the ability to contribute content. |
-| `Editor` | Grants users the ability to edit existing content. |
-| `Moderator` | Grants users the ability to moderate content. |
+| `Anonymous`     | A **system role** representing all non-authenticated users.          |
+| `Authenticated` | A **system role** representing all authenticated users.              |
+| `Author`        | Grants users the ability to create content.                          |
+| `Contributor`   | Grants users the ability to contribute content.                      |
+| `Editor`        | Grants users the ability to edit existing content.                   |
+| `Moderator`     | Grants users the ability to moderate content.                        |
 
 !!! note
     System roles cannot be deleted, and the `Administrator` role cannot be edited.
@@ -33,13 +33,13 @@ A sample of a roles configuration step:
             "Roles": [
                 {
                     "Name": "Journalist",
-                    "Description" "Journalist Role",
+                    "Description": "Journalist Role",
                     "PermissionBehavior": "Replace",
                     "Permissions": ["PublishContent", "EditContent"]
                 },
                 {
                     "Name": "Subscriber",
-                    "Description" "Subscriber Role",
+                    "Description": "Subscriber Role",
                     "PermissionBehavior": "Replace",
                     "Permissions": []
                 }

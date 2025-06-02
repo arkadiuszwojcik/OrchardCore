@@ -75,7 +75,7 @@ public sealed class SearchController : Controller
 
         searchService ??= searchServices.First();
 
-        if (!await _authorizationService.AuthorizeAsync(User, Permissions.QuerySearchIndex, new SearchPermissionParameters(searchService.Name, viewModel.Index)))
+        if (!await _authorizationService.AuthorizeAsync(User, SearchPermissions.QuerySearchIndex, new SearchPermissionParameters(searchService.Name, viewModel.Index)))
         {
             return this.ChallengeOrForbid();
         }
@@ -91,7 +91,7 @@ public sealed class SearchController : Controller
                     Terms = viewModel.Terms,
                     Placeholder = searchSettings.Placeholder,
                     Index = viewModel.Index,
-                }
+                },
             });
         }
 
@@ -199,6 +199,7 @@ public sealed class SearchController : Controller
                 ContentItems = containedItems.OrderBy(x => searchResult.ContentItemIds.IndexOf(x.ContentItemId))
                 .Take(pager.PageSize)
                 .ToList(),
+                Highlights = searchResult.Highlights,
             },
             Pager = await _shapeFactory.PagerSlimAsync(pager, new Dictionary<string, string>()
             {

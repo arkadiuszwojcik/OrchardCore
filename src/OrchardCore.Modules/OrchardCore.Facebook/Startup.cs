@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Facebook.Drivers;
+using OrchardCore.Facebook.Endpoints;
 using OrchardCore.Facebook.Filters;
 using OrchardCore.Facebook.Recipes;
 using OrchardCore.Facebook.Services;
@@ -20,7 +21,7 @@ public sealed class Startup : StartupBase
 {
     public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
     {
-        builder.UseMiddleware<ScriptsMiddleware>();
+        routes.AddSdkEndpoints();
     }
 
     public override void ConfigureServices(IServiceCollection services)

@@ -80,7 +80,6 @@ public sealed class EmailConfirmationController : Controller
 
     [Authorize]
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public async Task<IActionResult> SendVerificationEmail(string id = null, string returnUrl = null)
     {
         var currentUserId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -96,7 +95,7 @@ public sealed class EmailConfirmationController : Controller
         }
 
         // Allow users to verify their own email without the 'ManageUsers' permission.
-        if (id != currentUserId && !await _authorizationService.AuthorizeAsync(User, CommonPermissions.ManageUsers))
+        if (id != currentUserId && !await _authorizationService.AuthorizeAsync(User, UsersPermissions.ManageUsers))
         {
             return Forbid();
         }

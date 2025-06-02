@@ -1,0 +1,3 @@
+[submodule "src/ExternalModules/Zepto.OrchardCore.WebPush"]
+	path = src/ExternalModules/Zepto.OrchardCore.WebPush
+	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.WebPush

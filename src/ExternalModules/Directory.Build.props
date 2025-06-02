@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Define a base directory (relative or absolute) -->
+    <OrchardCorePath>$(MSBuildThisFileDirectory)..\..\</OrchardCorePath>
+  </PropertyGroup>
+</Project>

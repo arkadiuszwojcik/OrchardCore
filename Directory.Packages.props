@@ -136,6 +136,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="9.0.5" />
     <!-- dotnet/extensions repository -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.5.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.5" />
     <!-- Serilog.AspNetCore -->
     <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="8.0.16" />
     <!-- dotnet/extensions repository -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.10.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.16" />
     <!-- Serilog.AspNetCore -->
     <PackageVersion Include="Serilog.AspNetCore" Version="8.0.3" />
   </ItemGroup>

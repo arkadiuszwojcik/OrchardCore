@@ -86,15 +86,38 @@
         
             // Wait for service worker to be ready
             const registration = await navigator.serviceWorker.ready;
-        
+
+            const serverPublicKeyAsUrlSafeBase64 = await (await fetch('/webpush/public-key')).text();
+
+            const existingSubscription = await registration.pushManager.getSubscription();
+    
+            if (existingSubscription) {
+              console.log('Already subscribed:', existingSubscription);
+
+              const publicKey = existingSubscription.getKey('p256dh');
+
+              if (publicKey == serverPublicKeyAsUrlSafeBase64)
+                return existingSubscription;
+            }
+
             // Subscribe to push notifications
-            const subscription = await registration.pushManager.subscribe({
+            const newSubscription = await registration.pushManager.subscribe({
                 userVisibleOnly: true,
-                applicationServerKey: btoa("BOZh99okzNey4hm9R4YOBxrCtduVUDf-JdzEqpp6GCklw4bJbFvkwBgVGkmv8wuQkr4OQ4kcXx4ODxQkqkZ_iPo"),
+                //applicationServerKey: btoa(serverPublicKey),
+                applicationServerKey: serverPublicKeyAsUrlSafeBase64,
             });
-        
-            console.info("Created subscription Object: ", subscription.toJSON());
-            return subscription;
+
+            const requestBody = JSON.stringify(newSubscription.toJSON());
+            const response = await fetch('/webpush/subscriptions', {
+              method: 'POST', // The HTTP method
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: requestBody
+            });
+
+            console.info("Created subscription Object: ", newSubscription.toJSON());
+            return newSubscription;
         
         } catch (error) {
             console.error("Subscription failed:", error);

@@ -32,6 +32,7 @@
   -->
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.Pwa\src\Zepto.OrchardCore.Pwa\Zepto.OrchardCore.Pwa.csproj" />
     <ProjectReference Include="..\OrchardCore.Application.Targets\OrchardCore.Application.Targets.csproj" PrivateAssets="none" />
 
     <!--

@@ -21,7 +21,8 @@
     ".scripts/bloom",
     "src/Frontend/",
     "src/OrchardCore.Modules/*/Assets/**",
-    "src/OrchardCore.Themes/*/Assets/**"
+    "src/OrchardCore.Themes/*/Assets/**",
+    "src/ExternalModules/*/src/*/Assets/**"
   ],
   "devDependencies": {
     "@babel/core": "^7.22.11",

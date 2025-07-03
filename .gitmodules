@@ -4,3 +4,6 @@
 [submodule "src/ExternalModules/Zepto.OrchardCore.Pwa"]
 	path = src/ExternalModules/Zepto.OrchardCore.Pwa
 	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Pwa.git
+[submodule "src/ExternalModules/Zepto.OrchardCore.Polls"]
+	path = src/ExternalModules/Zepto.OrchardCore.Polls
+	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Polls.git

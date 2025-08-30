@@ -7,3 +7,6 @@
 [submodule "src/ExternalModules/Zepto.OrchardCore.Polls"]
 	path = src/ExternalModules/Zepto.OrchardCore.Polls
 	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Polls.git
+[submodule "src/ExternalModules/Zepto.OrchardCore.Common"]
+	path = src/ExternalModules/Zepto.OrchardCore.Common
+	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Common.git

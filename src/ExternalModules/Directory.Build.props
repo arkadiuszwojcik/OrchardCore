@@ -6,6 +6,7 @@
 
   <PropertyGroup>
     <OrchardCorePath>$(MSBuildThisFileDirectory)..\..\</OrchardCorePath>
+    <ZeptoOrchardCoreModulesPath>$(MSBuildThisFileDirectory)</ZeptoOrchardCoreModulesPath>
     <TargetFrameworks>$(CommonTargetFrameworks)</TargetFrameworks>
   </PropertyGroup>
 

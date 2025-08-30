@@ -586,6 +586,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zepto.OrchardCore.Pwa", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zepto.OrchardCore.Polls", "src\ExternalModules\Zepto.OrchardCore.Polls\src\Zepto.OrchardCore.Polls\Zepto.OrchardCore.Polls.csproj", "{A5BFCCBE-C3E5-A518-5168-FB9D066BC6D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zepto.OrchardCore.Common", "src\ExternalModules\Zepto.OrchardCore.Common\src\Zepto.OrchardCore.Common\Zepto.OrchardCore.Common.csproj", "{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1482,6 +1484,10 @@ Global
 		{A5BFCCBE-C3E5-A518-5168-FB9D066BC6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BFCCBE-C3E5-A518-5168-FB9D066BC6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BFCCBE-C3E5-A518-5168-FB9D066BC6D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1736,6 +1742,7 @@ Global
 		{3DB7CD0E-D080-A2C4-AB77-10E463D638D6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{04C35581-A99F-383C-54FB-110EBAA878D3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A5BFCCBE-C3E5-A518-5168-FB9D066BC6D8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C4432C17-CDD4-CC0E-4F53-D1AF56F1DB54} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46A1D25A-78D1-4476-9CBF-25B75E296341}

@@ -68,6 +68,8 @@
     <PackageVersion Include="YesSql.Filters.Abstractions" Version="5.4.7" />
     <PackageVersion Include="YesSql.Filters.Query" Version="5.4.7" />
     <PackageVersion Include="ZString" Version="2.6.0" />
+    <PackageVersion Include="Lib.AspNetCore.WebPush" Version="2.2.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
   </ItemGroup>
   <ItemGroup>
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />

@@ -10,3 +10,6 @@
 [submodule "src/ExternalModules/Zepto.OrchardCore.Common"]
 	path = src/ExternalModules/Zepto.OrchardCore.Common
 	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Common.git
+[submodule "src/ExternalModules/Zepto.OrchardCore.Isztar"]
+	path = src/ExternalModules/Zepto.OrchardCore.Isztar
+	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.Isztar.git

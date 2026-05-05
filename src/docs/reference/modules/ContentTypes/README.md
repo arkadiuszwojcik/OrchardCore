@@ -11,7 +11,7 @@ The editor returns the selection as a `string[]` on the model.
 #### Parameters
 
 | Parameter               | Type       | Description                                                                            |
-| ----------------------- | ---------- | -------------------------------------------------------------------------------------- |
+|-------------------------|------------|----------------------------------------------------------------------------------------|
 | `selectedContentTypes`  | `string[]` | The list of content types that should be marked as selected when rendering the editor. |
 | `htmlName`              | `string`   | The name of the model property to bind the result to.                                  |
 | `stereotype` (optional) | `string`   | A stereotype name to filter the list of content types available to select.             |
@@ -179,7 +179,7 @@ public sealed class ProductController : Controller
             return NotFoundObjectResult();
         }
 
-        var productPart = product.As<Product>();
+        var productPart = product.GetOrCreate<Product>();
 
         // you'll get exceptions if any of these Fields are null
         // the null-conditional operator (?) should be used for any fields which aren't required
@@ -200,15 +200,23 @@ public sealed class ProductController : Controller
             return NotFoundObjectResult();
         }
 
-        var productPart = product.As<Product>();
+        var productPart = product.GetOrCreate<Product>();
         productPart.Price.Value = price;
 
         product.Apply(productPart) //apply modified part to a content item
 
         await _contentManager.UpdateAsync(product); //update will fire handlers which could alter the content item.
 
-        //validation will cancel changes if product is not valid. It's fired after update since handlers could change the object.
-        return await _contentManager.ValidateAsync(product);
+        //validate the content item after update since handlers could change the object.
+        var result = await _contentManager.ValidateAsync(product);
+
+        if (!result.Succeeded)
+        {
+            // Cancel the session to discard any pending changes.
+            await _session.CancelAsync();
+        }
+
+        return result;
     }
 }
 ```

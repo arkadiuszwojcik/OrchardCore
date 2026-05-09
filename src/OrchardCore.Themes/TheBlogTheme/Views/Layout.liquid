@@ -105,7 +105,8 @@
     async function registerAndSubscribe() {
         try {
             // Register service worker
-            await navigator.serviceWorker.register("./notification-sw.js");
+            //await navigator.serviceWorker.register("./notification-sw.js");
+            await navigator.serviceWorker.register("./webpush/sdk/OneSignalSDK.sw.js");
         
             // Wait for service worker to be ready
             const registration = await navigator.serviceWorker.ready;

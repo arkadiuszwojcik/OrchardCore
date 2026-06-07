@@ -16,3 +16,6 @@
 [submodule "src/ExternalModules/Zepto.OrchardCore.ContentSignals"]
 	path = src/ExternalModules/Zepto.OrchardCore.ContentSignals
 	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.ContentSignals.git
+[submodule "src/ExternalModules/Zepto.OrchardCore.FeedHub"]
+	path = src/ExternalModules/Zepto.OrchardCore.FeedHub
+	url = https://github.com/arkadiuszwojcik/Zepto.OrchardCore.FeedHub.git

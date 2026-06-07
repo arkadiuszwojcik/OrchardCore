@@ -32,7 +32,6 @@
   -->
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.Pwa\src\Zepto.OrchardCore.Pwa\Zepto.OrchardCore.Pwa.csproj" />
     <ProjectReference Include="..\OrchardCore.Application.Targets\OrchardCore.Application.Targets.csproj" PrivateAssets="none" />
 
     <!--
@@ -129,8 +128,12 @@
     <ProjectReference Include="..\..\OrchardCore.Modules\OrchardCore.Widgets\OrchardCore.Widgets.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\OrchardCore.Modules\OrchardCore.Workflows\OrchardCore.Workflows.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\OrchardCore.Modules\OrchardCore.XmlRpc\OrchardCore.XmlRpc.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.WebPush\src\Zepto.OrchardCore.WebPush\Zepto.OrchardCore.WebPush.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\OrchardCore.Themes\TheAdmin\TheAdmin.csproj" PrivateAssets="none" />
+
+    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.Pwa\src\Zepto.OrchardCore.Pwa\Zepto.OrchardCore.Pwa.csproj" />
+    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.ContentSignals\src\Zepto.OrchardCore.ContentSignals\Zepto.OrchardCore.ContentSignals.csproj" />
+    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.FeedHub\src\Zepto.OrchardCore.FeedHub\Zepto.OrchardCore.FeedHub.csproj" />
+    <ProjectReference Include="..\..\ExternalModules\Zepto.OrchardCore.WebPush\src\Zepto.OrchardCore.WebPush\Zepto.OrchardCore.WebPush.csproj" PrivateAssets="none" />
   </ItemGroup>
 
 </Project>

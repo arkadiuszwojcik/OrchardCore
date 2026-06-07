@@ -76,6 +76,7 @@
     <Project Path="src/ExternalModules/Zepto.OrchardCore.Polls/src/Zepto.OrchardCore.Polls/Zepto.OrchardCore.Polls.csproj" />
     <Project Path="src/ExternalModules/Zepto.OrchardCore.Isztar/src/Zepto.OrchardCore.Isztar/Zepto.OrchardCore.Isztar.csproj" />
     <Project Path="src/ExternalModules/Zepto.OrchardCore.ContentSignals/src/Zepto.OrchardCore.ContentSignals/Zepto.OrchardCore.ContentSignals.csproj" />
+    <Project Path="src/ExternalModules/Zepto.OrchardCore.FeedHub/src/Zepto.OrchardCore.FeedHub/Zepto.OrchardCore.FeedHub.csproj" />
   </Folder>
   <Folder Name="/src/OrchardCore.Modules.Cms/">
     <Project Path="src/OrchardCore.Modules/OrchardCore.AdminMenu/OrchardCore.AdminMenu.csproj" />

@@ -17,6 +17,10 @@ public partial class NotificationIndex : MapIndex
 
     public DateTime CreatedAtUtc { get; set; }
 
+    public string Type { get; set; }
+
+    public string ReferenceId { get; set; }
+
     /// <summary>
     /// The Content column should only be used to search the content of a notification.
     /// </summary>
@@ -66,16 +70,18 @@ public partial class NotificationIndexProvider : IndexProvider<Notification>
                     IsRead = isRead,
                     ReadAtUtc = readAtUtc,
                     CreatedAtUtc = notification.CreatedUtc,
+                    Type = notification.Type,
+                    ReferenceId = notification.ReferenceId,
                     Content = content,
                 };
             });
     }
 
-    private static readonly Regex _htmlRegex = GetHtmlBlockRegex();
+    private static readonly Regex s_htmlRegex = GetHtmlBlockRegex();
 
     public static string StripHTML(string html)
     {
-        return _htmlRegex.Replace(html, string.Empty);
+        return s_htmlRegex.Replace(html, string.Empty);
     }
 
     [GeneratedRegex("<.*?>", RegexOptions.Compiled)]

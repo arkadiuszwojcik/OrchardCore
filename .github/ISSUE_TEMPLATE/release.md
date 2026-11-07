@@ -40,7 +40,7 @@ assignees: ''
 
 **Update Translations**: After finalizing code changes, update translations in the [Translations project](https://github.com/OrchardCMS/OrchardCore.Translations):
 
-- [ ] Update .po files using [PoExtractor](https://github.com/lukaskabrt/PoExtractor) to refresh translations on [Crowdin](https://crowdin.com/project/orchard-core).
+- [ ] Make sure the translation templates are up to date by building the solution from the repository root with `dotnet build OrchardCore.slnx -c Release -p:UpdateLocalizationCatalogs=true` and committing any changed `.pot` file. Upload the templates, listed by `git ls-files '*.pot'`, to [Crowdin](https://crowdin.com/project/orchard-core), then download the translated PO files to update the Translations project. Follow the [translation templates workflow](../../src/docs/reference/modules/Localize/README.md#export-translation-templates-for-localization-platforms), the successor to POExtractor.
 - [ ] Publish the new version on NuGet.
 - [ ] Update the `OrchardCore.Translations.All` package reference in the main repository's `./Dependencies.Packages.props` file.
 
@@ -116,3 +116,4 @@ dotnet run occms
 - [ ] Post in the [Orchard Core LinkedIn group](https://www.linkedin.com/groups/13605669/).
 - [ ] Post to the [Orchard Core Facebook page](https://www.facebook.com/OrchardCore/).
 - [ ] Send a message to the `#announcements` channel on Discord.
+- [ ] Add an announcement banner linking to the release notes on the home page of the website (Home content item → top Block → Announcement tab: add it with the `Release` badge).

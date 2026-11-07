@@ -52,19 +52,24 @@ A recipe is a `.recipe.json` file placed in a Recipes folder within your module 
 
 ## Recipe Helpers
 
-These helpers allow dynamic expressions inside recipe values using a special syntax.
+These helpers allow dynamic expressions inside recipe values using the `[prefix:script]` syntax. Only the `js` and `file` scripting engines are available. An expression with any other prefix is not evaluated, and is stored as a literal string without its surrounding brackets.
 
-| Helper         | Example Usage                                                                       | Description                                                                                                            |
-|----------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `js`           | `"ContentItemId": "[js:variables('homePageId')]"`                                   | Evaluates a JavaScript expression. Common for referencing `variables`.                                                 |
-| `file`         | `"Content": "[file:text('Snippets/homepage.liquid')]"`                              | Loads content from an external file. Often used for Liquid templates.                                                  |
-| `env`          | `"value": "[env:MyEnvironmentVariable]"`                                            | Injects values from environment variables.                                                                             |
-| `appsettings`  | `"value": "[appsettings:OrchardCore:SiteName]"`                                     | Reads configuration from `appsettings.json`.                                                                           |
-| `localization` | `"value": "[localization:WelcomeTitle]"`                                            | Retrieves localized strings by key.                                                                                    |
-| `uuid`         | `"Id": "[js:uuid()]"`                                                               | Generates a new unique identifier (UUID/GUID).                                                                         |
-| `base64`       | `"data": "[js:base64('ew0KICAgICJ0eXBlIjogIkNvbnRlbnRJdGVtL0Jsb2dQb3N0Ig0KfQ==')]"` | Decodes the specified string from Base64 encoding. Use https://www.base64-image.de/ to convert your files to base64.   |
-| `html`         | `"html": "[js:html('&lt;p&gt;Hello &amp; welcome&lt;/p&gt;')]"`                     | Decodes the specified string from HTML encoding.                                                                       |
-| `gzip`         | `"data": "[js:gzip('data')]"`                                                       | Decodes the specified string from gzip/base64 encoding. Use http://www.txtwizard.net/compression to gzip your strings. |
+| Prefix | Example Usage                                          | Description                                                           |
+|--------|--------------------------------------------------------|-----------------------------------------------------------------------|
+| `js`   | `"ContentItemId": "[js:variables('homePageId')]"`      | Evaluates a JavaScript expression. Common for referencing `variables`. |
+| `file` | `"Content": "[file:text('Snippets/homepage.liquid')]"` | Loads content from an external file. Often used for Liquid templates. |
+
+The following methods are commonly used in `js` expressions. They are JavaScript methods, not prefixes, see the [Scripting](../Scripting/README.md) documentation for the full list:
+
+| Method          | Example Usage                                                                       | Description                                                                                                            |
+|-----------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `configuration` | `"value": "[js:configuration('SiteName', 'fallback')]"`                             | Reads a tenant configuration value, with an optional default. Keys are relative to the `OrchardCore` section.          |
+| `uuid`          | `"Id": "[js:uuid()]"`                                                               | Generates a new unique identifier (UUID/GUID).                                                                         |
+| `base64`        | `"data": "[js:base64('ew0KICAgICJ0eXBlIjogIkNvbnRlbnRJdGVtL0Jsb2dQb3N0Ig0KfQ==')]"` | Decodes the specified string from Base64 encoding. Use https://www.base64-image.de/ to convert your files to base64.   |
+| `html`          | `"html": "[js:html('&lt;p&gt;Hello &amp; welcome&lt;/p&gt;')]"`                     | Decodes the specified string from HTML encoding.                                                                       |
+| `gzip`          | `"data": "[js:gzip('data')]"`                                                       | Decodes the specified string from gzip/base64 encoding. Use http://www.txtwizard.net/compression to gzip your strings. |
+
+Environment variables are only available through `configuration` when they are part of the `OrchardCore` section. For example, an `OrchardCore__MY_ENV_VAR` environment variable can be read with `[js:configuration('MY_ENV_VAR')]`, but a root-level `MY_ENV_VAR` variable is not exposed to the tenant configuration. See the [Configuration](../Configuration/README.md) documentation for more details.
 
 ---
 
@@ -421,6 +426,27 @@ Runs additional recipes within the current one, allowing modular reuse.
 }
 ```
 As `executionid` use a custom identifier to distinguish these recipe executions from others. As `name` use the `name` field from the given recipe's head (this is left blank when you export to recipes).
+
+---
+
+### `command`
+
+Runs one or more of the built-in commands. This is useful during setup or import, for example to create a user.
+
+```json
+{
+  "name": "command",
+  "Commands": [
+    "createUser /UserName:admin /Password:Password1! /Email:admin@example.com /Roles:Administrator"
+  ]
+}
+```
+
+Each entry in `Commands` is a single command: the command name followed by any `/Switch:value` arguments.
+
+The command most useful in recipes is `createUser`, which provisions a user during setup or import. See the [Users documentation](../Users/README.md#commands) for its switches.
+
+Other commands, such as `help commands` (lists every available command) and `recipes harvest` (lists the available recipes), write their result to the log and are meant for interactive or diagnostic use rather than for imports. Run `help commands` to see the full list of commands registered by the enabled features.
 
 ---
 
